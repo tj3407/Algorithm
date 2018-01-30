@@ -115,12 +115,18 @@ function fibonacci(index){
 
 function sumToOne(num){
     var sum = 0;
-    for(var i = 0; i < num.length; i++){
-        sum += num
+    while(num > 9){
+        sum += Math.trunc(num / Math.pow(10,0)) % 10;
+        while(num / 10 > 1){
+            num = Math.trunc(num / 10);
+            sum += Math.trunc(num / Math.pow(10,0)) % 10;
+        }
+        num = sum;
+        sum = 0;
     }
 }
 
-// console.log(sumToOne(978));
+console.log(sumToOne(977));
 
 // Clock Hand Angles - SEMI DONE
 // Regardless of how bad a Dojo student works (and they should work hard), they need time now and then to unwind -

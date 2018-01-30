@@ -31,7 +31,7 @@ function factorial(num){
     }
     return factor; 
 }
-// console.log(factorial(10));
+console.log(factorial(10));
 
 /* “Star Art
 Assume that you have a text field that is exactly 75 characters long. You want to fill it with spaces 
