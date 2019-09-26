@@ -52,3 +52,16 @@ function post_order(root) {
 }
 
 post_order(root); // => [ D, E, B, C, A ]
+
+function level_order(root, nodes) {
+    var queue = [root];
+    while (queue.length > 0) {
+        // front of queue is at element 0 and we push elements to back of queue
+        var n = queue.shift();
+        console.log(n.data);
+        if (n.left !== null) { queue.push(n.left); }
+        if (n.right !== null) { queue.push(n.right); }
+    }
+}
+
+level_order(root); // => [ A, B, C, D, E ]
