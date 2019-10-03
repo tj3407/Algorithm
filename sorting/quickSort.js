@@ -4,21 +4,28 @@
 // O(nlogn) - average
 // O(n2) - worst case
 
-const arr = [15, 3, 9, 8, 5, 2, 7, 1, 6]
+const arr = [100,77,5,2,4,1,3,6,0,67,203]
 
-const quickSort = (arr, left, right) => {
+const quickSort = (arr) => {
+    let left = 0;
+    let right = arr.length-1;
+    recursion(arr, left, right);
+    return arr; 
+}
+
+const recursion = (arr, left, right) => {
     if (left >= right) return
-    let pivot = arr[Math.floor((left+right) / 2)];
-    console.log('pivot', pivot)
-    let partitionIndex = partition(arr, left, right, pivot)
-    console.log('partitionIndex', partitionIndex)
-    quickSort(arr, left, partitionIndex - 1);
-    quickSort(arr, partitionIndex, right);
+
+    let partitionIndex = partition(arr, left, right)
+
+    recursion(arr, left, partitionIndex - 1);
+    recursion(arr, partitionIndex, right);
     return arr;
 }
 
-const partition = (arr, left, right, pivot) => {
-    while (left < right) {
+const partition = (arr, left, right) => {
+    let pivot = arr[Math.floor((left+right) / 2)];
+    while (left <= right) {
         while (arr[left] < pivot) {
             left++;
         }
@@ -38,7 +45,7 @@ const partition = (arr, left, right, pivot) => {
     return left;        
 }
 
-console.log(quickSort(arr, 0, arr.length-1))
+console.log('quicksort1:', quickSort(arr))
 
 const quickSort2 = (arr) => {
     if (arr.length <= 1) return arr;
@@ -47,16 +54,16 @@ const quickSort2 = (arr) => {
     let left = [];
     let right = [];
 
-    for (let i = 0; i < arr.length-1; i++) {
+    for (let i = 0; i < arr.length; i++) {
         if (arr[i] < pivot) {
             left.push(arr[i]);
         } else {
             right.push(arr[i]);
         }
     }
+    // console.log(left, right)
 
-
-    return [...quickSort2(left), pivot, ...quickSort2(right)];
+    return [...left, ...right];
 }
 
 console.log('quicksort2', quickSort2(arr));

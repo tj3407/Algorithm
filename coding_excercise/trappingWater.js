@@ -15,14 +15,14 @@ function trappingWater(height) {
             } else {
                 water += leftWall - height[left];
             }
-            left += 1;
+            left++;
         } else {
             if (height[right] > rightWall) {
                 rightWall = height[right];
             } else {
                 water += rightWall - height[right];
             }
-            right -= 1;
+            right--;
         }
     }
     return water

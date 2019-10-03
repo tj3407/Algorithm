@@ -22,11 +22,20 @@ n4.left = n3;
 n6.left = n5;
 n6.right = n7;
 
+      //       10
+      //       /  \
+      //     7    35
+      //   /  \  /  \
+      // 5    9  30   45
+      //     /
+      //    8   
+          
+
 // BST INORDER SUCCESSOR:
 
 function findMin(node) {
   if (node === null) return;
-  const minNode = node;
+  let minNode = node;
   while (node.left !== null) {
     minNode = node.left;
   }
@@ -44,15 +53,23 @@ function find(node, value) {
   }
 }
 
-function getSuccessor(node, value) {
-  let current = find(node, value);
+function getSuccessor(root, value) {
+  let current = find(root, value);
   if (current.val === null) return;
 
   if (current.right !== null) {
     return findMin(current.right);
   } else {
     let successor = null;
-    let ancestor = node;
+    let ancestor = root;
+
+      //       10
+      //       /  \
+      //     7    35
+      //   /  \  /  \
+      // 5    9  30   45
+      //  \  /
+      //   6 8   
     while (ancestor !== current) {
       if (current.val < ancestor.val) {
         successor = ancestor;
@@ -65,4 +82,4 @@ function getSuccessor(node, value) {
   }
 }
 
-console.log(getSuccessor(root, 5))
+console.log(getSuccessor(root, 9))

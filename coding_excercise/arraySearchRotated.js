@@ -15,7 +15,11 @@ var search = function(nums, target) {
 
     let left = 0;
     let right = nums.length - 1;
-    
+
+    // search([4,5,6,7,0,1,2], 5))
+    //                 lr
+
+    // get the lowest value in array
     while (left < right) {
         let midpoint = Math.floor(left + (right - left) / 2);
         if (nums[midpoint] > nums[right]) {
@@ -35,6 +39,7 @@ var search = function(nums, target) {
         right = start;
     }
     
+    // binary search
     while (left <= right) {
         let midpoint = Math.floor(left + (right - left) / 2);
         if (nums[midpoint] == target) {
@@ -42,11 +47,11 @@ var search = function(nums, target) {
         } else if (nums[midpoint] < target) {
             left = midpoint+1;
         } else {
-            right = midpoint-1;
+            right = midpoint;
         }
     }
     
     return -1;
 };
 
-console.log(search([4,5,6,7,0,1,2], 0)) // expected result: 4
+console.log('result:', search([4,5,6,7,0,1,2], 5)) // expected result: 4

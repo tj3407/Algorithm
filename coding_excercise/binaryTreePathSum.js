@@ -42,4 +42,4 @@ var hasPathSum = function(root, sum) {
     }
 };
 
-console.log(hasPathSum(root, 35))
+console.log(hasPathSum(root, 22))

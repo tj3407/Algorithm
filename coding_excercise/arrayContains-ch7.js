@@ -22,4 +22,4 @@ const arrayContains = (arr, val) => {
 let arr = [1, 3, 5, 7, 8, 9]; 
 let x = 5; 
 
-arrayContains(arr, x);
+console.log(arrayContains(arr, x));
